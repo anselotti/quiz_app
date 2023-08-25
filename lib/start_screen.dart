@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
 class StartScreen extends StatelessWidget {
-  const StartScreen({Key? key}) : super(key: key);
+  const StartScreen(this.startQuiz, {super.key});
+
+  final void Function() startQuiz;
 
   @override
   Widget build(context) {
-    return Column(
+    return Center(
+        child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         const Row(
@@ -35,7 +38,7 @@ class StartScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(30),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: startQuiz,
                 icon: const Icon(
                   Icons.play_circle,
                   color: Colors.white,
@@ -53,6 +56,6 @@ class StartScreen extends StatelessWidget {
           ],
         ),
       ],
-    );
+    ));
   }
 }
