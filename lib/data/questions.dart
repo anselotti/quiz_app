@@ -5,9 +5,9 @@ const questions = [
     'Which English club was the first to win the European Cup in 1968?',
     [
       'Manchester United',
-      'Real Madrid',
-      'FC Barcelona',
-      'Juventus',
+      'Liverpool',
+      'Newcastle United',
+      'Chelsea',
     ],
   ),
   QuizQuestion('Who is the all-time top scorer for the German national team?', [
