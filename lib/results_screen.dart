@@ -24,6 +24,24 @@ class ResultsScreen extends StatelessWidget {
     return summary;
   }
 
+  String getResultText(int result, int total) {
+    var resultPercentage = (result / total) * 100;
+
+    if (resultPercentage == 100) {
+      return 'Perfect! You could get a contract to Saudi Pro League!';
+    }
+    if (resultPercentage >= 66) {
+      return 'Well done! You know more about football than Jose Mourinho!';
+    }
+    if (resultPercentage >= 33) {
+      return 'You follow more ice kendo?';
+    }
+    if (resultPercentage >= 1) {
+      return 'Ok you might have done something else than watch football and drink beer?';
+    }
+    return 'You couldn\'t get a contract even to Veikkausliiga!';
+  }
+
   @override
   build(BuildContext context) {
     final summaryData = getSummaryData();
@@ -42,25 +60,21 @@ class ResultsScreen extends StatelessWidget {
             Text(
               'You answered $numberOfCorrectAnswers out of $numberOfTotalQuestions questions correctly!',
               style: GoogleFonts.montserrat(
-                fontSize: 16,
+                fontSize: 24,
                 fontWeight: FontWeight.w500,
                 color: const Color.fromARGB(255, 215, 247, 247),
               ),
+              textAlign: TextAlign.center,
             ),
-            if (numberOfCorrectAnswers == numberOfTotalQuestions)
-              const Text(
-                  'Perfect! You could get a contract to Saudi Pro League!'),
-            if (numberOfCorrectAnswers < numberOfTotalQuestions &&
-                numberOfCorrectAnswers >= 5)
-              const Text(
-                  'Well done! You know more about football than Jose Mourinho!'),
-            if (numberOfCorrectAnswers < 5 && numberOfCorrectAnswers >= 3)
-              const Text('You follow more ice kendo?'),
-            if (numberOfCorrectAnswers < 3 && numberOfCorrectAnswers >= 1)
-              const Text(
-                  'Ok you might have done something else than watch football and drink beer?'),
-            if (numberOfCorrectAnswers == 0)
-              const Text('You couldn\'t get a contract even to Veikkausliiga!'),
+            const SizedBox(height: 30),
+            Text(
+              getResultText(numberOfCorrectAnswers, numberOfTotalQuestions),
+              style: GoogleFonts.montserrat(
+                fontSize: 16,
+                color: Color.fromARGB(255, 173, 254, 254),
+              ),
+              textAlign: TextAlign.center,
+            ),
             const SizedBox(height: 30),
             QuestionsSummary(summaryData),
             const SizedBox(height: 30),
